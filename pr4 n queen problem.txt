@@ -1,0 +1,49 @@
+n = int(input("Enter the value for n\n"))
+# Initialize the board
+board = [[0 for i in range(n)] for i in range(n)]
+
+def check_column(board, row, column):
+    # Check this column in previous rows
+    for i in range(row, -1, -1):
+        if board[i][column] == 1:
+            return False  # Capital F
+    return True
+
+def check_diagonal(board, row, column):
+    # Check upper-left diagonal
+    for i, j in zip(range(row, -1, -1), range(column, -1, -1)):
+        if board[i][j] == 1: # Changed 'based' to 'board'
+            return False
+    
+    # Check upper-right diagonal
+    for i, j in zip(range(row, -1, -1), range(column, n)):
+        if board[i][j] == 1: # Changed 'based' to 'board'
+            return False
+    return True
+
+def nqn(board, row):
+    # Base case: All queens are placed
+    if row == n:
+        return True
+    
+    for i in range(n):
+        # Check if it's safe to place a queen at board[row][i]
+        if check_column(board, row, i) and check_diagonal(board, row, i):
+            board[row][i] = 1
+            
+            # Recur to place the rest
+            if nqn(board, row + 1):
+                return True
+            
+            # Backtrack: If placing queen doesn't lead to a solution, remove it
+            board[row][i] = 0
+            
+    return False # Capital F
+
+# Execute and Print
+if nqn(board, 0):
+    print(f"\nSolution for {n} queens:")
+    for row in board:
+        print(row)
+else:
+    print("No solution exists.")
