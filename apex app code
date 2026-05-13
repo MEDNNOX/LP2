@@ -1,0 +1,22 @@
+public class StudentInfo {
+
+    public static void showDetails() {
+
+        String name = 'Rahul';
+        Integer marks = 85;
+
+        System.debug('Student Name: ' + name);
+        System.debug('Student Marks: ' + marks);
+
+        if(marks >= 35) {
+            System.debug('Result: Pass');
+        }
+        else {
+            System.debug('Result: Fail');
+        }
+
+    }
+
+} 
+
+StudentInfo.showDetails();
