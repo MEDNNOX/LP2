@@ -1,0 +1,20 @@
+name = "Rahul"
+marks = 78
+
+print("Student Name:", name)
+print("Marks:", marks)
+
+if marks >= 35:
+    print("Result: Pass")
+else:
+    print("Result: Fail")
+
+# Grade Calculation
+if marks >= 75:
+    print("Grade: A")
+elif marks >= 60:
+    print("Grade: B")
+elif marks >= 35:
+    print("Grade: C")
+else:
+    print("Grade: F")
